@@ -10,19 +10,20 @@ def intersection(arrays):
     
     #while in range of lists
     while curr_arr < len(arrays):
-        #for number in current list
+        # this will be used to make sure no dups are added to the count
         dup_check = set()
+        #for number in current list
         for n in arrays[curr_arr]:
             #if that number is in the hashtable--
             if n in hold_count:
-                
+                # check to make sure we are not adding duplicates to the count from the same array
                 if n not in dup_check: 
                     dup_check.add(n)
                     hold_count[n] += 1
             else:
                 hold_count[n] = 1
         curr_arr += 1
-        
+    # list comp adds k (key) from hold_count if value is the the count of the arrays  
     results = [k for k, v in hold_count.items() if v == len(arrays)]
     return results
 

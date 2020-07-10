@@ -4,7 +4,29 @@ def intersection(arrays):
     """
     # Your code here
 
-    return result
+    hold_count = {}
+    curr_arr = 0
+
+    
+    #while in range of lists
+    while curr_arr < len(arrays):
+        #for number in current list
+        dup_check = set()
+        for n in arrays[curr_arr]:
+            #if that number is in the hashtable--
+            if n in hold_count:
+                
+                if n not in dup_check: 
+                    dup_check.add(n)
+                    hold_count[n] += 1
+            else:
+                hold_count[n] = 1
+        curr_arr += 1
+        
+    results = [k for k, v in hold_count.items() if v == len(arrays)]
+    return results
+
+
 
 
 if __name__ == "__main__":
